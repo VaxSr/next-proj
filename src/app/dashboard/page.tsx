@@ -22,7 +22,7 @@ export default async function DashboardPage() {
     throw new Error("User not found or session invalid");
   }
 
-  const data = await getData(user.id);
+  const data = await getData(user?.id);
 
   return (
     <div>
