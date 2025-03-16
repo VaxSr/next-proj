@@ -17,9 +17,12 @@ async function getData(userId: string) {
 
 export default async function DashboardPage() {
   const { getUser } = getKindeServerSession();
-  const { id } = await getUser();
+  const user = await getUser();
+  if (!user) {
+    throw new Error("User not found or session invalid");
+  }
 
-  const data = await getData(id);
+  const data = await getData(user.id);
 
   return (
     <div>
